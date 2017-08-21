@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.util.mybatis.Mapper">
+	<select id="query" resultType="map">
+		select * from T_MALL_CLASS_1
+	</select>
+	<select id="queryById" resultType="map">
+		select * from T_MALL_CLASS_2 where flbh1 = #{id}
+	</select>
+	<select id="queryById1" resultType="map">
+		select tm.id,tm.ppmch 
+		from t_mall_tm_class as tm_c
+		join t_mall_trade_mark as tm 
+		on tm.id = tm_c.pp_id 
+		and flbh1 = #{id}
+	</select>
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.mapper.SpuMapper">
+	
+	<insert id="insert_spu" useGeneratedKeys="true" keyProperty="id">
+		insert into t_mall_product<!-- (shp_mch,flbh1,flbh2,pp_id,shp_msh) -->
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="shp_mch!=null">
+				shp_mch,
+			</if>
+			<if test="flbh1!=null">
+				flbh1,
+			</if>
+			<if test="flbh2!=null">
+				flbh2,
+			</if>
+			<if test="pp_id!=null">
+				pp_id,
+			</if>
+			<if test="shp_msh!=null">
+				shp_msh,
+			</if>
+			<if test="shp_tp!=null">
+				shp_tp,
+			</if>		
+		</trim>
+		values<!-- (#{shp_mch},#{flbh1},#{flbh2},#{pp_id},#{shp_msh}) -->
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="shp_mch!=null">
+				#{shp_mch},
+			</if>
+			<if test="flbh1!=null">
+				#{flbh1},
+			</if>
+			<if test="flbh2!=null">
+				#{flbh2},
+			</if>
+			<if test="pp_id!=null">
+				#{pp_id},
+			</if>
+			<if test="shp_msh!=null">
+				#{shp_msh},
+			</if>	
+			<if test="shp_tp!=null">
+				#{shp_tp},
+			</if>	
+		</trim>
+	</insert>
+	
+	<insert id="insert_spu_images" parameterType="list">
+		insert into t_mall_product_image(shp_id,url) values
+		<foreach collection="upload_images" item="url" separator=",">
+			(#{id},#{url})
+		</foreach> 
+	</insert>
+	
+	<select id="select_all_product" resultType="com.atguigu.bean.T_MALL_PRODUCT">
+		select * from t_mall_product
+	</select>
+	<select id="select_product_by_id" resultType="com.atguigu.bean.T_MALL_PRODUCT">
+		select * from t_mall_product where id = #{id}
+	</select>
+</mapper>
