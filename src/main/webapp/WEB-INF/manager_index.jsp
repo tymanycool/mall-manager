@@ -133,6 +133,15 @@
 							<li>删除</li>
 						</ul>
 					</li>
+					<li>
+						<span>
+							缓存信息管理
+						</span>
+						<ul>
+							<li>用户缓存管理</li>
+							<li><a href="javascript:;" onclick="index_add_tabs('/goto_search_redis.do','检索缓存管理')">检索缓存管理</a></li>
+						</ul>
+					</li>
 				</ul>
 			</li>
 		</ul>
